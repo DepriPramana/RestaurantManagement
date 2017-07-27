@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Sample" Class="POSDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=ROBIN\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Encrypt=False;TrustServerCertificate=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SampleConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Product" Member="Products">
+    <Type Name="Product">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Unit_Price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Sale_Price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Image" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="Product_Order_Detail" Member="Order_Details" ThisKey="ID" OtherKey="Product_ID" Type="Order_Detail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Order_Details" Member="Order_Details">
+    <Type Name="Order_Detail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Product_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Order_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Product_Order_Detail" Member="Product" ThisKey="Product_ID" OtherKey="ID" Type="Product" IsForeignKey="true" />
+      <Association Name="Order_Order_Detail" Member="Order" ThisKey="Order_ID" OtherKey="ID" Type="Order" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Order]" Member="Orders">
+    <Type Name="Order">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Order_Order_Detail" Member="Order_Details" ThisKey="ID" OtherKey="Order_ID" Type="Order_Detail" />
+    </Type>
+  </Table>
+</Database>
