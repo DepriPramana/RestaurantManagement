@@ -31,21 +31,30 @@ namespace RestaurantManagement {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// foodPanel control.
+        /// foodSelectionPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel foodPanel;
+        protected global::System.Web.UI.WebControls.Panel foodSelectionPanel;
         
         /// <summary>
-        /// food control.
+        /// orderPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder food;
+        protected global::System.Web.UI.WebControls.Panel orderPanel;
+        
+        /// <summary>
+        /// orderGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView orderGridView;
     }
 }

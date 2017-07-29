@@ -63,6 +63,7 @@
     <Content Include="Pictures\1.jpg" />
     <Content Include="Pictures\2.jpg" />
     <Content Include="Pictures\3.jpg" />
+    <Content Include="Pictures\4.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
