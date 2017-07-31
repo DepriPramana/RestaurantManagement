@@ -8,6 +8,38 @@ namespace RestaurantManagement
     
     public class Store
     {
+        public static int getLastFilename()
+        {
+            try
+            {
+                string conn = @"Data Source=ROBIN\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                POSDBDataContext DB = new POSDBDataContext(conn);
+                int result = (from t in DB.Products
+                              orderby t.ID descending
+                              select t.ID).First();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public static bool addFood(Product product)
+        {
+            try
+            {
+                string conn = @"Data Source=ROBIN\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                POSDBDataContext DB = new POSDBDataContext(conn);
+
+                DB.Products.InsertOnSubmit(product);
+                DB.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public static bool addOrder(List<Order_Received> listOrder_Received)
         {
             try
