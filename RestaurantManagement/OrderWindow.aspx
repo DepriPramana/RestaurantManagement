@@ -25,15 +25,28 @@
         <asp:Panel ID="foodSelectionPanel" runat="server" CssClass="floatLeft" >
            </asp:Panel>
         
-        <div style="position: absolute; left: 55%; top: 0px; padding: 5px; width: 30%; height: auto; border-left: solid 3px Black;"><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>
+        
         <asp:Panel ID="orderPanel" runat="server" CssClass="floatRight" >
            
-            <asp:GridView ID="orderGridView" style="margin-left:20%" runat="server">
+            <asp:GridView ID="orderGridView" style="margin-left:20%" runat="server" OnRowCancelingEdit="orderGridView_RowCancelingEdit" OnRowCreated="orderGridView_RowCreated" OnRowDeleting="orderGridView_RowDeleting" OnRowEditing="orderGridView_RowEditing" OnRowUpdating="orderGridView_RowUpdating">
                 
+                <Columns>
+                    <asp:CommandField ButtonType="Button" HeaderText="Operations" ShowDeleteButton="True" ShowEditButton="True" ShowHeader="True" />
+                </Columns>
             </asp:GridView>
+            <br>      <br>
+            <asp:Button ID="confirmOrder" runat="server" OnClick="confirmOrder_Click" style="margin-left:70%" Text="Confirm Order" Visible="False" />
+            <br> <asp:Label ID="msg" ForeColor="Green" runat="server" Text=""></asp:Label>
         </asp:Panel>
         
     </div>
+         
+        <asp:Panel ID="functions" runat="server" style="margin-top:30%">
+            <asp:Button ID="addFood" runat="server" Text="Add Food" PostBackUrl="~/AddFood.aspx" />
+            <asp:Button ID="updateFood" runat="server" Text="Update Food" />
+            <asp:Button ID="deleteFood" runat="server" Text="Delete Food" />
+            <asp:Button ID="changeStatus" runat="server" Text="Change Status" />
+        </asp:Panel>
     </form>
 </body>
 </html>

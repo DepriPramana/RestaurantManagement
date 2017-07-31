@@ -158,7 +158,18 @@ namespace RestaurantManagement
 
             //}
         }
+        private void BindGrid()
+        {
+            if (ViewState["listOrder_Received"] != null)
+                listOrder_Received = (List<Order_Received>)ViewState["listOrder_Received"];
+            orderGridView.DataSource = listOrder_Received;
+            orderGridView.DataBind();
 
+            if (orderGridView.Rows.Count <= 0)
+                confirmOrder.Visible = false;
+            else
+                confirmOrder.Visible = true;
+        }
         private void Image_Click(object sender, ImageClickEventArgs e)
         {
             if (ViewState["listOrder_Received"] != null)
@@ -194,8 +205,88 @@ namespace RestaurantManagement
             }
             //Response.Write(listOrder_Received.Count);
             ViewState["listOrder_Received"] = listOrder_Received;
-            orderGridView.DataSource = listOrder_Received;
-            orderGridView.DataBind();
+            BindGrid();
+        }
+
+        protected void orderGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            
+            if (ViewState["listOrder_Received"] != null)
+                listOrder_Received = (List<Order_Received>)ViewState["listOrder_Received"];
+            //Response.Write(orderGridView.SelectedIndex);
+            listOrder_Received.RemoveAt(e.RowIndex);
+            BindGrid();
+            
+        }
+
+        protected void orderGridView_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            orderGridView.EditIndex = e.NewEditIndex;
+
+            BindGrid();
+        }
+
+        protected void orderGridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            if (ViewState["listOrder_Received"] != null)
+                listOrder_Received = (List<Order_Received>)ViewState["listOrder_Received"];
+
+            Order_Received order = listOrder_Received.ElementAt(e.RowIndex);
+            
+            //Response.Write(e.NewValues["Quantity"]);
+
+            order.Quantity = Convert.ToInt32(e.NewValues["Quantity"]);
+            order.SubTotal = order.Quantity * order.Price;
+
+            orderGridView.EditIndex = -1;
+            this.BindGrid();
+        }
+
+        protected void orderGridView_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            orderGridView.EditIndex = -1;
+            this.BindGrid();
+        }
+
+        protected void orderGridView_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            msg.Text = "";
+
+            foreach (TableCell cell in e.Row.Cells)
+            {
+                if (!string.IsNullOrEmpty(cell.Text) && cell.Text != "&nbsp;")
+                {
+                    try
+                    {
+                        BoundField field = (BoundField)((DataControlFieldCell)cell).ContainingField;
+                        if (field.DataField != "Quantity")
+                            field.ReadOnly = true;
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+        }
+     
+        protected void confirmOrder_Click(object sender, EventArgs e)
+        {
+            if (ViewState["listOrder_Received"] != null)
+                listOrder_Received = (List<Order_Received>)ViewState["listOrder_Received"];
+
+            try
+            {
+                Store.addOrder(listOrder_Received);
+                msg.Text = "Order is Placed Successfully";
+                listOrder_Received.Clear();
+                BindGrid();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Error while placing order");
+                Response.Write(ex.Message + " " + ex.StackTrace);
+            }
         }
     }
     [Serializable]

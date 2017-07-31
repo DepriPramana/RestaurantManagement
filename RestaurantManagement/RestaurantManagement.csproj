@@ -59,6 +59,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddFood.aspx" />
     <Content Include="OrderWindow.aspx" />
     <Content Include="Pictures\1.jpg" />
     <Content Include="Pictures\2.jpg" />
@@ -67,6 +68,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddFood.aspx.cs">
+      <DependentUpon>AddFood.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddFood.aspx.designer.cs">
+      <DependentUpon>AddFood.aspx</DependentUpon>
+    </Compile>
     <Compile Include="OrderWindow.aspx.cs">
       <DependentUpon>OrderWindow.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -80,6 +88,7 @@
       <DependentUpon>POSDB.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Store.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="POSDB.dbml">
