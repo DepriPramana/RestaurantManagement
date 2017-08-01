@@ -94,30 +94,48 @@ namespace RestaurantManagement {
         protected global::System.Web.UI.WebControls.Button addFood;
         
         /// <summary>
-        /// updateFood control.
+        /// manageFood control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button updateFood;
+        protected global::System.Web.UI.WebControls.Button manageFood;
         
         /// <summary>
-        /// deleteFood control.
+        /// dateWiseSales control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button deleteFood;
+        protected global::System.Web.UI.WebControls.Button dateWiseSales;
         
         /// <summary>
-        /// changeStatus control.
+        /// showOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button changeStatus;
+        protected global::System.Web.UI.WebControls.Button showOrders;
+        
+        /// <summary>
+        /// EmployeeRegistration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button EmployeeRegistration;
+        
+        /// <summary>
+        /// logout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button logout;
     }
 }

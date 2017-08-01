@@ -24,14 +24,18 @@
     <form id="form1" runat="server">
     <div>
         Name: <asp:TextBox ID="name" runat="server"></asp:TextBox>
-        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Name Required." ForeColor="Red" ControlToValidate="name"></asp:RequiredFieldValidator>--%><br>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Name Required." ForeColor="Red" ControlToValidate="name"></asp:RequiredFieldValidator><br>
         Unit Price: <asp:TextBox ID="unitPrice" runat="server"></asp:TextBox>
-        <%--<asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Invalid Price" ControlToValidate="unitPrice" MinimumValue="1" ForeColor="Red" ToolTip="numerical value only" MaximumValue="999" Type="Integer"></asp:RangeValidator>--%><br>
-        Sale Price: <asp:TextBox ID="salePrice" runat="server"></asp:TextBox><br>
+        <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Invalid Price" ControlToValidate="unitPrice" MinimumValue="1" ForeColor="Red" ToolTip="numerical value only" MaximumValue="999" Type="Double"></asp:RangeValidator><br>
+        Sale Price: <asp:TextBox ID="salePrice" runat="server"></asp:TextBox>
+        <asp:RangeValidator ID="salevalidator" runat="server" ErrorMessage="Invalid Price" ControlToValidate="salePrice" MinimumValue="1" ForeColor="Red" ToolTip="numerical value only" MaximumValue="999" Type="Double"></asp:RangeValidator> <br>
+
         Image: <asp:Image ID="image" Height ="100%" runat="server" />
-        <asp:FileUpload ID="fileUpload" runat="server" /> <br>
+        <asp:FileUpload ID="fileUpload" runat="server" />
+        <asp:Label ID="imageErroe" runat="server" Text="" ForeColor="Red"></asp:Label> <br>
         <asp:Button ID="add" runat="server" Text="Add Food" OnClick="add_Click" />
         <asp:Label ID="errorMsg" runat="server" Text="" ForeColor="Red"></asp:Label>
+        <asp:Button ID="back" runat="server" Text="Back" PostBackUrl="~/OrderWindow.aspx"/>
     </div>
     </form>
 </body>

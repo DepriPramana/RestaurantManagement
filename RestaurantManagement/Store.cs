@@ -8,6 +8,7 @@ namespace RestaurantManagement
     
     public class Store
     {
+        public static string conn = @"Data Source=ROBIN\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public static int getLastFilename()
         {
             try
@@ -18,6 +19,27 @@ namespace RestaurantManagement
                               orderby t.ID descending
                               select t.ID).First();
                 return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public static bool removeFood(int productID)
+        {
+            try
+            {
+                POSDBDataContext DB = new POSDBDataContext(conn);
+                var pro = (from ee in DB.Products
+                          where ee.ID == productID
+                          select ee).ToList();
+                if (pro.Count == 1)
+                {
+                    DB.Products.DeleteOnSubmit(pro.First());
+                    DB.SubmitChanges();
+                }
+
+                return true;
             }
             catch (Exception ex)
             {

@@ -17,6 +17,15 @@ namespace RestaurantManagement
 
         protected void add_Click(object sender, EventArgs e)
         {
+            if (!fileUpload.HasFile)
+            {
+                imageErroe.Text = "NoFile is selected";
+                return;
+            }
+            else
+            {
+                imageErroe.Text = "";
+            }
             string filePath = Server.MapPath("~/Pictures");
             int lastfileName = Store.getLastFilename()+1;
             fileUpload.SaveAs(filePath + "\\" + fileUpload.FileName);

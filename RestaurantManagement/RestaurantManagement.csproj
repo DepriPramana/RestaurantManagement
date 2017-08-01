@@ -60,11 +60,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddFood.aspx" />
+    <Content Include="AdminLogin.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="ManageProduct.aspx" />
     <Content Include="OrderWindow.aspx" />
+    <Content Include="OtherImages\calender.png" />
     <Content Include="Pictures\1.jpg" />
     <Content Include="Pictures\2.jpg" />
     <Content Include="Pictures\3.jpg" />
     <Content Include="Pictures\4.jpg" />
+    <Content Include="packages.config" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="RegistrationPage.aspx" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="DateWiseSales.aspx" />
+    <Content Include="ShowOrders.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +87,23 @@
     </Compile>
     <Compile Include="AddFood.aspx.designer.cs">
       <DependentUpon>AddFood.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ManageProduct.aspx.cs">
+      <DependentUpon>ManageProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageProduct.aspx.designer.cs">
+      <DependentUpon>ManageProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="OrderWindow.aspx.cs">
       <DependentUpon>OrderWindow.aspx</DependentUpon>
@@ -88,6 +118,27 @@
       <DependentUpon>POSDB.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DateWiseSales.aspx.cs">
+      <DependentUpon>DateWiseSales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DateWiseSales.aspx.designer.cs">
+      <DependentUpon>DateWiseSales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrationPage.aspx.cs">
+      <DependentUpon>RegistrationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrationPage.aspx.designer.cs">
+      <DependentUpon>RegistrationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShowOrders.aspx.cs">
+      <DependentUpon>ShowOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShowOrders.aspx.designer.cs">
+      <DependentUpon>ShowOrders.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Store.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +147,8 @@
       <LastGenOutput>POSDB.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -43,9 +43,11 @@
          
         <asp:Panel ID="functions" runat="server" style="margin-top:30%">
             <asp:Button ID="addFood" runat="server" Text="Add Food" PostBackUrl="~/AddFood.aspx" />
-            <asp:Button ID="updateFood" runat="server" Text="Update Food" />
-            <asp:Button ID="deleteFood" runat="server" Text="Delete Food" />
-            <asp:Button ID="changeStatus" runat="server" Text="Change Status" />
+            <asp:Button ID="manageFood" runat="server" Text="Manage Food" PostBackUrl="~/ManageProduct.aspx" />
+            <asp:Button ID="dateWiseSales" runat="server" Text="Date Wise Sales" PostBackUrl="~/DateWiseSales.aspx"/>
+            <asp:Button ID="showOrders" runat="server" Text="Show Orders"  PostBackUrl="~/ShowOrders.aspx"/>
+            <asp:Button ID="EmployeeRegistration" runat="server" Text="Employee Registration" PostBackUrl="~/RegistrationPage.aspx" />
+            <asp:Button ID="logout" runat="server" Text="Logout" PostBackUrl="~/AdminLogin.aspx" />
         </asp:Panel>
     </form>
 </body>

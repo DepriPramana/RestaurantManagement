@@ -15,27 +15,13 @@ namespace RestaurantManagement
         {
             string connStr = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
             string connectionString = @"Data Source=ROBIN\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
+            Cache["ConnectionString"] = connectionString;
             POSDBDataContext db = new POSDBDataContext(connectionString);
 
             var query = (from ee in db.Products
                          where ee.Status != false
                          select ee).ToList();
             int rowCount = query.Count();
-
-            //TableRow row1 = new TableRow();
-            //foodTable.Rows.Add(row1);
-
-            //TableCell cell1 = new TableCell();
-            //row1.HorizontalAlign = HorizontalAlign.Center;
-            //row1.Cells.Add(cell1);
-
-            //TableRow row2 = new TableRow();
-            //foodTable.Rows.Add(row2);
-
-            //TableCell cell2 = new TableCell();
-            //row2.HorizontalAlign = HorizontalAlign.Center;
-            //row2.Cells.Add(cell2);
 
             int numbeofSubTables = (rowCount / 4) + 1;
             int numberOfLastSubTableColumn = rowCount % 4;
@@ -97,66 +83,6 @@ namespace RestaurantManagement
                 orderGridView.DataSource = listOrder_Received;
                 orderGridView.DataBind();
             }
-            //for (int j = 0; j < rows; j++)
-            //{
-            //    TableRow row1 = new TableRow();
-            //    row1.HorizontalAlign = HorizontalAlign.Center;
-            //    foodTable.Rows.Add(row1);
-
-            //    for (int i = 0; i < 3; i++)// 5 && i < rowCount
-            //    {
-            //        TableCell cell = new TableCell();
-            //        row1.Cells.Add(cell);
-
-            //        ImageButton image = new ImageButton();
-            //        image.ID = query[i].Image.Substring(0, 1);
-            //        image.ImageUrl = "~/Pictures/" + query[i].Image;
-            //        image.Width = 200;
-            //        cell.Controls.Add(image);
-            //    }
-
-            //    TableRow row2 = new TableRow();
-            //    row2.HorizontalAlign = HorizontalAlign.Center;
-            //    foodTable.Rows.Add(row2);
-
-            //    for (int i = 0; i < 5 && i < rowCount; i++)
-            //    {
-            //        TableCell cell = new TableCell();
-            //        row2.Cells.Add(cell);
-
-            //        Label label = new Label();
-            //        label.Text = query[i].Name;
-            //        cell.Controls.Add(label);
-            //    }
-            //}
-            //foreach (var item in query)
-            //{
-            //    //Panel panel = new Panel();
-
-            //    ImageButton image = new ImageButton();
-            //    image.ImageUrl = "~/Pictures/" + item.Image;
-            //    image.Width = 200;
-            //    //foodPanel.Controls.Add(image);
-            //    cell1.Controls.Add(image);
-
-            //    Label label = new Label();
-            //    label.Text = item.Name;
-            //    //label.Attributes.CssStyle.Add("display", "block");
-            //    //label.Attributes.CssStyle.Add("margin-left", "80px");
-            //    cell2.Controls.Add(label);
-            //}
-            //foodPanel.Controls.Add(new LiteralControl("<br />"));
-            //foreach (var item in temp)
-            //{
-            //    Label label = new Label();
-            //    label.Text = item.Name;
-            //    //label.Attributes.CssStyle.Add("display", "block");
-            //    label.Attributes.CssStyle.Add("margin-left", "80px");
-            //    foodPanel.Controls.Add(label);
-
-            //    foodPanel.Controls.Add(new LiteralControl("<span>  dgfgf    </span>"));
-
-            //}
         }
         private void BindGrid()
         {
@@ -174,8 +100,7 @@ namespace RestaurantManagement
         {
             if (ViewState["listOrder_Received"] != null)
                 listOrder_Received = (List<Order_Received>)ViewState["listOrder_Received"];
-            string connectionString = @"Data Source=ROBIN\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            POSDBDataContext DB = new POSDBDataContext(connectionString);
+            POSDBDataContext DB = new POSDBDataContext(Cache["ConnectionString"].ToString());
             ImageButton image = sender as ImageButton;
             int productID = int.Parse(image.ID);
             bool flag = false;
