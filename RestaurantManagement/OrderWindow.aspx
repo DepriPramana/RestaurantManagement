@@ -47,6 +47,7 @@
             <asp:Button ID="dateWiseSales" runat="server" Text="Date Wise Sales" PostBackUrl="~/DateWiseSales.aspx"/>
             <asp:Button ID="showOrders" runat="server" Text="Show Orders"  PostBackUrl="~/ShowOrders.aspx"/>
             <asp:Button ID="EmployeeRegistration" runat="server" Text="Employee Registration" PostBackUrl="~/RegistrationPage.aspx" />
+            <asp:Button ID="Button1" runat="server" Text="Employee Details" PostBackUrl="~/WebForm1.aspx"/>
             <asp:Button ID="logout" runat="server" Text="Logout" PostBackUrl="~/AdminLogin.aspx" />
         </asp:Panel>
     </form>

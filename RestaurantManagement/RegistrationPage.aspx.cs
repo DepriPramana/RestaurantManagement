@@ -54,15 +54,16 @@ namespace RestaurantManagement
 
             string connStr = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
             DataSet ds = (DataSet)Cache["DATASET"];
-            
+            int n = new Random().Next(1,100);
             DataRow dr = ds.Tables["Employees"].NewRow();
-            dr["EmployeeId"] = GridView1.Rows.Count + 3;
+
+            dr["EmployeeId"] = GridView1.Rows.Count + n;
             dr["EmployeeName"] = FullName.Text;
             dr["Email"] = email.Text;
             dr["Address"] = address.Text;
             dr["Password"] = pass.Text;
             //dr["DOB"] = Calendar1.SelectedDate;
-            dr["DOB"] = "2017-8-1";
+            dr["DOB"] = DateTime.Parse(date.Text);
             ds.Tables["Employees"].Rows.Add(dr);
             Cache["DATASET"] = ds;
             SqlDataAdapter adapter = (SqlDataAdapter)Cache["Employees_Adapter"];//
@@ -77,6 +78,14 @@ namespace RestaurantManagement
         {
             Response.Redirect("~/");
         }
-
+        protected void ImageButtonShowCalendar_Click(object sender, ImageClickEventArgs e)
+        {
+            CalendarDOB.Visible = !CalendarDOB.Visible;
+        }
+        protected void CalendarDOB_SelectionChanged(object sender, EventArgs e)
+        {
+            date.Text = CalendarDOB.SelectedDate.ToShortDateString();
+            CalendarDOB.Visible = false;
+        }
     }
 }

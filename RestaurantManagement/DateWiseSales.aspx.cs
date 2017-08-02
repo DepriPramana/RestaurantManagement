@@ -37,10 +37,10 @@ namespace RestaurantManagement
             Response.Write(DateTime.Parse(datet));
             POSDBDataContext DB = new POSDBDataContext(Cache["ConnectionString"].ToString());
             var showOrder = (from orders in DB.Orders
-                             join orderDetails in DB.Order_Details on orders.ID equals orderDetails.ID
+                             join orderDetails in DB.Order_Details on orders.ID equals orderDetails.Order_ID
                              join pro in DB.Products on orderDetails.Product_ID equals pro.ID
                              where orders.Date.Value.Date.Equals(DateTime.Parse(date.Text))
-                             select new { OrderID = orderDetails.ID, Name = pro.Name, Sale = pro.Sale_Price, Quantity = orderDetails.Quantity, SubTotal = pro.Sale_Price * orderDetails.Quantity });
+                             select new { OrderDetailsID = orderDetails.ID, Name = pro.Name, Sale = pro.Sale_Price, Quantity = orderDetails.Quantity, SubTotal = pro.Sale_Price * orderDetails.Quantity });
             var sum = showOrder.Select(x => x.SubTotal).Sum();
             totalSalesAmount.Text = sum.ToString();
             gridView.DataSource = showOrder;

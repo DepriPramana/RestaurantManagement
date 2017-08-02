@@ -12,7 +12,10 @@ namespace RestaurantManagement
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if(ViewState["back"] != null)
+            {
+                Response.Write("HI");
+            }
         }
 
         protected void add_Click(object sender, EventArgs e)
@@ -27,13 +30,13 @@ namespace RestaurantManagement
                 imageErroe.Text = "";
             }
             string filePath = Server.MapPath("~/Pictures");
-            int lastfileName = Store.getLastFilename()+1;
+            int lastfileName = Store.getLastFilename() + 1;
             fileUpload.SaveAs(filePath + "\\" + fileUpload.FileName);
             string source = filePath + "\\" + fileUpload.FileName;
-            string destination = filePath + "\\" + lastfileName + ".jpg";
-            Response.Write(source);
-            Response.Write("<br>" + destination);
-            File.Move(source, destination);
+            string newName = filePath + "\\" + lastfileName + ".jpg";
+            //Response.Write(source);
+            //Response.Write("<br>" + newName);
+            File.Move(source, newName);
 
             Product product = new Product();
             product.Name = name.Text;
@@ -45,12 +48,21 @@ namespace RestaurantManagement
             try
             {
                 Store.addFood(product);
+                msg.Text = "Product is added successfully";
+                unitPrice.Text = "";
+                salePrice.Text = "";
+                name.Text = "";
 
             }
             catch(Exception ex)
             {
                 errorMsg.Text = ex.Message;
             }
+        }
+
+        protected void back_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -14,16 +14,19 @@ namespace RestaurantManagement
         protected void Page_Load(object sender, EventArgs e)
         {
             string connStr = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
-            string connectionString = @"Data Source=ROBIN\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            string connectionString = @"Data Source=LAPTOP\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             Cache["ConnectionString"] = connectionString;
             POSDBDataContext db = new POSDBDataContext(connectionString);
 
             var query = (from ee in db.Products
-                         where ee.Status != false
+                         where ee.Status.Equals( true)
                          select ee).ToList();
             int rowCount = query.Count();
 
-            int numbeofSubTables = (rowCount / 4) + 1;
+            int numbeofSubTables = (rowCount / 4) ;
+            bool isInt = numbeofSubTables % 1 == 0; //checking int or not
+            if (!isInt) //if not int then add 1 to make table
+               numbeofSubTables += 1;
             int numberOfLastSubTableColumn = rowCount % 4;
             int imageCount = 0;
             int imageNameCount = 0;
@@ -50,8 +53,8 @@ namespace RestaurantManagement
                     image.Click += Image_Click;
                     cell.Controls.Add(image);
                     imageCount++;
-                    
-                    if (i == numbeofSubTables && j == numberOfLastSubTableColumn-1)
+
+                    if (i == numbeofSubTables && j == numberOfLastSubTableColumn - 1)
                         break;
                 }
 

@@ -70,6 +70,7 @@
     <Content Include="Pictures\3.jpg" />
     <Content Include="Pictures\4.jpg" />
     <Content Include="packages.config" />
+    <Content Include="WebForm1.aspx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="RegistrationPage.aspx" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -140,6 +141,13 @@
       <DependentUpon>ShowOrders.aspx</DependentUpon>
     </Compile>
     <Compile Include="Store.cs" />
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="POSDB.dbml">

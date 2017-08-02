@@ -8,12 +8,12 @@ namespace RestaurantManagement
     
     public class Store
     {
-        public static string conn = @"Data Source=ROBIN\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public static string conn = @"Data Source=LAPTOP\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public static int getLastFilename()
         {
             try
             {
-                string conn = @"Data Source=ROBIN\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                string conn = @"Data Source=LAPTOP\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
                 POSDBDataContext DB = new POSDBDataContext(conn);
                 int result = (from t in DB.Products
                               orderby t.ID descending
@@ -50,7 +50,7 @@ namespace RestaurantManagement
         {
             try
             {
-                string conn = @"Data Source=ROBIN\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                string conn = @"Data Source=LAPTOP\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
                 POSDBDataContext DB = new POSDBDataContext(conn);
 
                 DB.Products.InsertOnSubmit(product);
@@ -66,7 +66,7 @@ namespace RestaurantManagement
         {
             try
             {
-                string conn = @"Data Source=ROBIN\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                string conn = @"Data Source=LAPTOP\SQLEXPRESS;Initial Catalog=Sample;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
                 POSDBDataContext DB = new POSDBDataContext(conn);
 
                 Order order = new Order();
