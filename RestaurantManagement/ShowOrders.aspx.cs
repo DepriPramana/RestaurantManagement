@@ -15,7 +15,7 @@ namespace RestaurantManagement
             {
                 date.Text = DateTime.Now.ToShortDateString();
                 orderList();
-                GridBind();
+                //GridBind();
             }
 
 
@@ -40,7 +40,6 @@ namespace RestaurantManagement
             CalendarDOB.Visible = false;
 
             orderList();
-            GridBind();
         }
         private void orderList()
         {
@@ -61,6 +60,8 @@ namespace RestaurantManagement
                 msg.Visible = false;
                 Cache["orders"] = orders;
                 ViewState["selectedIndex"] = orders.Count - 1;
+                GridBind();
+
             }
         }
         private void GridBind()

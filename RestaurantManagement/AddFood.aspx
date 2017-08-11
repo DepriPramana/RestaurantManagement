@@ -37,10 +37,9 @@
         <asp:FileUpload ID="fileUpload" runat="server" />
         <asp:Label ID="imageErroe" runat="server" Text="" ForeColor="Red"></asp:Label> <br>
         <asp:Button ID="add" runat="server" Text="Add Food" OnClick="add_Click" />
-        <asp:Label ID="errorMsg" runat="server" Text="" ForeColor="Red"></asp:Label>
         <asp:Button ID="back" CausesValidation="false" runat="server" Text="Back" PostBackUrl="~/OrderWindow.aspx" OnClick="back_Click" />
         <asp:Label ID="msg" runat="server" Font-Size="15pt" ForeColor="#0000CC" ></asp:Label>
-
+        <asp:Label ID="errorMsg" runat="server" Text="" ForeColor="Red"></asp:Label>
     </div>
     </form>
 </body>

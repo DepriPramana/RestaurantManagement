@@ -23,10 +23,11 @@ namespace RestaurantManagement
                          select ee).ToList();
             int rowCount = query.Count();
 
-            int numbeofSubTables = (rowCount / 4) ;
+            double numbeofSubTables = (rowCount / 4.0) ;
             bool isInt = numbeofSubTables % 1 == 0; //checking int or not
             if (!isInt) //if not int then add 1 to make table
                numbeofSubTables += 1;
+            numbeofSubTables = (int)numbeofSubTables;
             int numberOfLastSubTableColumn = rowCount % 4;
             int imageCount = 0;
             int imageNameCount = 0;

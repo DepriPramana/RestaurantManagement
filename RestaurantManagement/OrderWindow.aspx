@@ -28,7 +28,7 @@
         
         <asp:Panel ID="orderPanel" runat="server" CssClass="floatRight" >
            
-            <asp:GridView ID="orderGridView" style="margin-left:20%" runat="server" OnRowCancelingEdit="orderGridView_RowCancelingEdit" OnRowCreated="orderGridView_RowCreated" OnRowDeleting="orderGridView_RowDeleting" OnRowEditing="orderGridView_RowEditing" OnRowUpdating="orderGridView_RowUpdating">
+            <asp:GridView ID="orderGridView" style="margin-left:20%" runat="server" OnRowCancelingEdit="orderGridView_RowCancelingEdit" OnRowCreated="orderGridView_RowCreated" OnRowDeleting="orderGridView_RowDeleting" OnRowEditing="orderGridView_RowEditing" OnRowUpdating="orderGridView_RowUpdating" Width="295px">
                 
                 <Columns>
                     <asp:CommandField ButtonType="Button" HeaderText="Operations" ShowDeleteButton="True" ShowEditButton="True" ShowHeader="True" />
